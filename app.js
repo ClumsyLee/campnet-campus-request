@@ -26,7 +26,7 @@ let requests;
 try {
   requests = JSON.parse(fs.readFileSync(filename));
 } catch (err) {
-  console.warn(`Failed to open the requests file: ${err}`);
+  console.warn(`Failed to open the requests file: ${err}.`);
   requests = {};
 }
 
@@ -41,7 +41,7 @@ app.get('/requests', readLimiter, async (req, res) => {
 });
 
 app.post('/requests', writeLimiter, async (req, res) => {
-  if (!req.body.name) return res.status(422).json({ message: 'Need name' });
+  if (!req.body.name) return res.status(422).json({ message: 'Need name.' });
   let { name } = req.body;
   name = name.trim().toLowerCase();
 
@@ -52,7 +52,7 @@ app.post('/requests', writeLimiter, async (req, res) => {
 });
 
 app.use((req, res, next) => {
-  res.status(404).json({ message: 'Not found' });
+  res.status(404).json({ message: 'Not found.' });
 });
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+app.listen(port, () => console.log(`Listening on port ${port}.`));
