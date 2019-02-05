@@ -1,0 +1,24 @@
+{
+  "name": "campnet-campus-request",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ClumsyLee/campnet-campus-request.git"
+  },
+  "author": "Sihan Li",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ClumsyLee/campnet-campus-request/issues"
+  },
+  "homepage": "https://github.com/ClumsyLee/campnet-campus-request#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-rate-limit": "^3.3.2"
+  }
+}
