@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 const bodyParser = require('body-parser');
-var cors = require('cors');
+const cors = require('cors');
 const express = require('express');
 const rateLimit = require('express-rate-limit');
 
@@ -10,6 +10,8 @@ const port = process.env.PORT || 3000;
 const filename = 'requests.json';
 
 // Rate limiters.
+app.enable('trust proxy');
+
 const readLimiter = rateLimit({
   windowMs: 60 * 60 * 1000, // 1 hour.
   max: 60,
@@ -35,8 +37,9 @@ try {
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(readLimiter);
 
-app.get('/requests', readLimiter, async (req, res) => {
+app.get('/requests', async (req, res) => {
   let keys = Object.keys(requests);
   keys.sort((lhs, rhs) => requests[rhs] - requests[lhs]);
   res.status(200).send(JSON.stringify(requests, keys));
