@@ -18,7 +18,7 @@ const readLimiter = rateLimit({
 
 const writeLimiter = rateLimit({
   windowMs: 24 * 60 * 60 * 1000, // 1 day.
-  max: 100,
+  max: 10,
   message: { message: 'Too many requests, please try again later.' }
 });
 
