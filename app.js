@@ -1,6 +1,7 @@
 const fs = require('fs');
 
 const bodyParser = require('body-parser');
+var cors = require('cors');
 const express = require('express');
 const rateLimit = require('express-rate-limit');
 
@@ -31,6 +32,7 @@ try {
 }
 
 // Middlewares.
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
